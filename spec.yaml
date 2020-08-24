@@ -1,0 +1,31 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Error Reproduction
+paths:
+  /producingError:
+    post:
+      summary: Create pets
+      operationId: createPets
+      tags:
+        - pets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Pet'
+              uniqueItems: true
+      responses:
+        '201':
+          description: Null response
+
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        name:
+          type: string
